@@ -1,0 +1,39 @@
+{% extends 'student/class_management.html' %}
+{% load static %}
+
+{% block title %}Add Class{% endblock %}
+{% block form %}
+    <h1>Add Class</h1>
+    <form method="POST">
+        {% csrf_token %}
+            {% for message in messages %}
+                <p class="alert alert-secondary">{{ message }}</p>
+            {% endfor %}
+            <div class="form-group">
+                <label for="">Course Name:</label>
+                {{ form.course_name }}
+            </div>
+            <div class="form-group">
+                <label for="">Teacher First Name:</label>
+                {{ form.teacher_first_name }}
+            </div>
+            <div class="form-group">
+                <label for="">Teacher Last Name:</label>
+                {{ form.teacher_last_name }}
+            </div>
+            <div class="form-group">
+                <label for="">Day:</label>
+                {{ form.days }}
+            </div>
+            <div class="form-group">
+                <label for="">Start Time:</label>
+                {{ form.start_time }}
+            </div>
+            <div class="form-group">
+                <label for="">End Time:</label>
+                {{ form.end_time }}
+            </div>
+            <button class="btn btn-primary" type="submit">Add Class</button>
+            <button class="btn btn-danger">Cancel</button>
+    </form>
+{% endblock %}

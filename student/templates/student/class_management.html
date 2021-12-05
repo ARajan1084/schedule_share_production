@@ -1,0 +1,28 @@
+{% extends 'student/base.html' %}
+{% load static %}
+
+{% block title %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row pt-5">
+            <div class="col-lg-4">
+                <table class="table">
+                    <tr>
+                        <td onclick="location.href='{% url 'add_class' %}'">Add Class</td>
+                    </tr>
+                    <tr>
+                        <td>Edit Class</td>
+                    </tr>
+                    <tr>
+                        <td onclick="location.href='{% url 'remove_class' %}'">Remove Class</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-lg-8">
+                {% block form %}{% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

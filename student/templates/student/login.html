@@ -1,0 +1,29 @@
+{% load static %}
+
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'student/boot/css/bootstrap.css' %}">
+</head>
+
+<body>
+    <div class="container pt-5">
+        <h1>Log In:</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {% for message in messages %}
+                <p class="alert alert-danger">{{ message }}</p>
+            {% endfor %}
+            <div class="form-group">
+                <label for="">Username:</label>
+                {{ form.username }}
+            </div>
+            <div class="form-group">
+                <label for="">Password:</label>
+                {{ form.password }}
+            </div>
+            <button class="btn btn-primary" type="submit">Login</button>
+        </form>
+        <button class="btn btn-light" onclick="location.href='{% url 'create_account' %}'">Create Account</button>
+    </div>
+
+</body>

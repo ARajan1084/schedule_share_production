@@ -1,0 +1,46 @@
+{% extends 'student/class_management.html' %}
+{% load static %}
+
+{% block title %}Remove Class{% endblock %}
+
+{% block form %}
+    <h1>Remove a Class</h1>
+    <table class="table table-striped">
+        {% if klasses %}
+            <tr>
+                <th>Course Name</th>
+                <th>Teacher</th>
+                <th>Day</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th></th>
+            </tr>
+            {% for klass in klasses %}
+                <tr>
+                    <td>{{ klass.course_name }}</td>
+                    <td>{{ klass.teacher_first_name }} {{ klass.teacher_last_name }}</td>
+                    {% if klass.day == 0 %}
+                        <td>Sunday</td>
+                    {% elif klass.day == 1 %}
+                         <td>Monday</td>
+                    {% elif klass.day == 2 %}
+                         <td>Tuesday</td>
+                    {% elif klass.day == 3 %}
+                         <td>Wednesday</td>
+                    {% elif klass.day == 4 %}
+                         <td>Thursday</td>
+                    {% elif klass.day == 5 %}
+                        <td>Friday</td>
+                    {% elif klass.day == 6 %}
+                        <td>Saturday</td>
+                    {% endif %}
+                    <td>{{ klass.start_time }}</td>
+                    <td>{{ klass.end_time }}</td>
+                    <td><button class="btn btn-danger fa fa-trash" onclick="location.href='{% url 'remove_a_class' klass.id %}'"></button></td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <p class="alert alert-secondary">No classes</p>
+        {% endif %}
+    </table>
+{% endblock %}
